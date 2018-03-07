@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="baseObserable"
+            type="com.aman.mvvmexample.model.UsingBaseObserableModel"/>
+        <variable
+            name="activity"
+            type="com.aman.mvvmexample.view.activity.UsingBaseObserable"/>
+    </data>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.aman.mvvmexample.view.activity.UsingBaseObserable"
+    tools:showIn="@layout/activity_using_base_obserable">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context="sample.android.databinding.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                app:hasTransientState="@{true}"
+                android:id="@+id/userStatus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@{baseObserable.isonline == true ? @color/colorAccent : @color/colorPrimary}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/userStatus"
+                android:layout_toRightOf="@id/userStatus"
+                android:text="@{baseObserable.userName}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_toEndOf="@id/userStatus"
+                android:layout_toRightOf="@id/userStatus"
+                android:text="@{baseObserable.userEmail}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email"
+                android:layout_toEndOf="@id/userStatus"
+                android:layout_toRightOf="@id/userStatus"
+                android:text="@{baseObserable.isonline == true ? @string/online : @string/offline}"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="10dp"
+            android:onClick="@{()->baseObserable.onButtonClick1(true)}"
+            android:text="@string/online" />
+
+        <Button
+            android:id="@+id/btnOffline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/btnOnline"
+            android:onClick="@{()->baseObserable.onButtonClick1(false)}"
+            android:text="@string/offline" />
+
+<!--    custom binding adapter    app:realValue="@={baseObserable.editTextDetails}"-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/smallPadding"
+            android:layout_centerInParent="true"
+          />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="fragment binding"
+            android:onClick="@{(v)->baseObserable.onButtonFragmentBinding(v)}"/>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,25 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data class="FragmentItemBinding">
+        <import type="android.view.View"/>
+        <variable
+            name="FragViewModel"
+            type="com.aman.mvvmexample.view.InnerRecDataBinding.ListViewModel"/>
+    </data>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aman.mvvmexample.view.InnerRecDataBinding.ImageAdapterItem">
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_menu_camera" />
+
+</FrameLayout>
+</layout>
